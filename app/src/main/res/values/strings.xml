@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ObnLite</string>
+    <string name="quickStart">Démarrer à la volée</string>
+    <string name="startObn">Débuter l\'Obn</string>
+    <string name="tango">Tango</string>
+    <string name="person">Individu</string>
+    <string name="car">Véhicule</string>
+    <string name="misc">Divers</string>
+    <string name="logs">Journal</string>
+    <string name="stopObn">ARRETER L\'OBN</string>
+    <string name="addButton">Ajouter</string>
+    <string name="getOutbutton">Sort de la plage</string>
+    <string name="getOutPlagebutton">Sort de la plage</string>
+    <string name="getInPlagebutton">Entre dans la plage</string>
+    <string name="directionButton">Part en direction de</string>
+    <string name="startStop">S\'arrête/Démarre</string>
+    <string name="getInOutAdr">Entre/Sort de l\'adresse</string>
+    <string name="is">Se trouve</string>
+    <string name="deal">Deal</string>
+    <string name="exchange">Echange</string>
+    <string name="contact">Contacte</string>
+    <string name="inoutvv">Entre/Sort d\'un véhicule</string>
+    <string name="contactvv">a contact avec vv</string>
+    <string name="otherAction">Autre action</string>
+    <string name="cancelPrevions">Annuler la dernière action</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tangoCar">Véhicule du tango</string>
+    <string name="newCar">Nouveau Véhicule</string>
+</resources>

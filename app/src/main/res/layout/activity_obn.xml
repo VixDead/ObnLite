@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonStartStop"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_weight="1"
+        android:text="@string/startObn" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tango"
+            android:id="@+id/tangoButton"
+            android:layout_weight="1"
+            style="@style/bigbuttons"
+            android:background="@drawable/bigbuttons"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/person"
+            android:id="@+id/personButton"
+            android:layout_weight="1"
+            style="@style/bigbuttons"
+            android:background="@drawable/bigbuttons"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/car"
+        android:id="@+id/carButton"
+        android:layout_weight="1"
+        style="@style/bigbuttons"
+        android:background="@drawable/bigbuttons"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/misc"
+        android:layout_weight="1"
+        android:id="@+id/miscButton"
+        style="@style/bigbuttons"
+        android:background="@drawable/bigbuttons"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logButton"
+        android:text="@string/logs" />
+</LinearLayout>
