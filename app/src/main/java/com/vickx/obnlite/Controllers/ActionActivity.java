@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.vickx.obnlite.Models.DAO.ObservationDAO;
+import com.vickx.obnlite.Models.DAO.EventDAO;
 import com.vickx.obnlite.Models.Event;
 import com.vickx.obnlite.Models.Observation;
 import com.vickx.obnlite.R;
@@ -69,11 +69,11 @@ public class ActionActivity extends AppCompatActivity {
         this.cancelPreviousButton.setEnabled(false);
         this.cameraButton.setEnabled(false);
 
-        this.getOutPlageButton.setOnClickListener(this::onGetOutPlageClick);
-        this.getInPlageButton.setOnClickListener(this::onGetInPlageClick);
-        this.dealButton.setOnClickListener(view -> ObservationDAO.log(this.observation,new Event(this.subject,"deal")));
-        this.exchangeButton.setOnClickListener(view -> ObservationDAO.log(this.observation,new Event(this.subject,"échange")));
+        this.getOutPlageButton.setOnClickListener(view -> log(this.subject,"sort", "de la plage"));
+        this.getInPlageButton.setOnClickListener(view -> log(this.subject,"rentre", "dans la plage"));
         this.moveStopbutton.setOnClickListener(this::movesStops);
+        this.dealButton.setOnClickListener(view -> log(this.subject,"deal",""));
+        this.exchangeButton.setOnClickListener(view -> log(this.subject,"fait","un échange"));
 
         if(this.getIntent().hasExtra("isTango") && this.getIntent().getExtras().getBoolean("isTango"))
             this.subject = "Tango";
@@ -97,19 +97,15 @@ public class ActionActivity extends AppCompatActivity {
     //endregion
 
     private void movesStops(View view) {
-        if(!this.isMoving)
-            ObservationDAO.log(this.observation,new Event(this.subject,"se met en mouvement"));
-        else
-            ObservationDAO.log(this.observation,new Event(this.subject,"s'arrête"));
+        log(this.subject,this.isMoving?"s'arrête":"se met en mouvement","");
         this.isMoving = !this.isMoving;
     }
 
-    private void onGetInPlageClick(View view) {
-        ObservationDAO.log(this.observation,new Event(subject, "entre", "dans la plage"));
-    }
 
-    private void onGetOutPlageClick(View view) {
-        ObservationDAO.log(this.observation,new Event(subject, "sort", "de la plage"));
+    private void log(String subject, String verb, String complement){
+        EventDAO eventDAO = new EventDAO(this);
+        Event event = new Event(subject,verb, complement);
+        eventDAO.insert(event);
     }
 
 }

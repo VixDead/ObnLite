@@ -2,17 +2,17 @@ package com.vickx.obnlite.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.vickx.obnlite.Models.DAO.ObservationDAO;
+import com.vickx.obnlite.Models.DAO.EventDAO;
 import com.vickx.obnlite.Models.Event;
 import com.vickx.obnlite.Models.Observation;
 import com.vickx.obnlite.R;
-import com.vickx.obnlite.VFactory;
 
 
 public class MiscActivity extends AppCompatActivity {
@@ -26,8 +26,6 @@ public class MiscActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_misc);
 
-        this.observation = VFactory.getObservation();
-        this.setTitle( this.observation.getDossier().getName() + " - " + getString(R.string.misc));
         this.addButton = findViewById(R.id.addButton);
         this.editText = findViewById(R.id.editText);
         
@@ -36,7 +34,23 @@ public class MiscActivity extends AppCompatActivity {
     }
 
     private void addButtonClick(View view) {
-        ObservationDAO.log(this.observation,new Event(this.editText.getText().toString()));
+        new EventDAO(this).insert(new Event(this.editText.getText().toString(),"",""));
         this.finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu,menu);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }

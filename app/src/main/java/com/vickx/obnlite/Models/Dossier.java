@@ -4,8 +4,6 @@ package com.vickx.obnlite.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.vickx.obnlite.Models.DAO.DossierDAO;
-
 import java.time.LocalDate;
 
 public class Dossier implements Base {
@@ -39,12 +37,6 @@ public class Dossier implements Base {
     private Dossier(Parcel source) {
         this.setId(source.readInt());
         this.setName(source.readString());
-    }
-
-    public static Dossier createNew() {
-        LocalDate localDate = LocalDate.now();
-        Dossier dossier = new Dossier(0,"Sans nom du " + localDate.getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear());
-        return new DossierDAO().Insert(dossier);
     }
 
     @Override

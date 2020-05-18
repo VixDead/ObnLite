@@ -24,4 +24,11 @@ public abstract class VFactory {
     public static void setCurrentEvent(Event currentEvent) {
         VFactory.currentEvent = currentEvent;
     }
+
+    public static String addZero(int i){
+        if(i< 10)
+            return "0" + i;
+        else
+            return String.valueOf(i);
+    }
 }

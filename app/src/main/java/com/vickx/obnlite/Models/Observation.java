@@ -3,9 +3,6 @@ package com.vickx.obnlite.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.vickx.obnlite.Models.DAO.ObservationDAO;
-import com.vickx.obnlite.VFactory;
-
 import java.time.LocalDateTime;
 
 public class Observation implements Parcelable {
@@ -22,12 +19,6 @@ public class Observation implements Parcelable {
         this.state = state;
     }
 
-    public static Observation startNew(Dossier dossier){
-        Observation observation = new Observation(dossier, LocalDateTime.now(), ObnState.started);
-        ObservationDAO.log(observation, new Event("Observation","starts"));
-        return observation;
-    }
-
     public String onString(){
         return "Observation started on " + this.start.getDayOfMonth() + "/" + this.start.getMonthValue() + "/" + this.start.getYear() + " at " + this.start.getHour() + ":" + this.start.getMinute();
     }
@@ -35,12 +26,6 @@ public class Observation implements Parcelable {
     public ObnState getState() {
         return state;
     }
-
-    public void stop() {
-        ObservationDAO.log(this,new Event("Observation","stops"));
-        this.state = ObnState.stopped;
-    }
-
 
     public Dossier getDossier() {
         return this.dossier;

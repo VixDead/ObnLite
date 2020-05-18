@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controllers.CarActivity"></activity>
+        <activity android:name=".Controllers.LogsActivity"></activity>
+        <activity android:name=".Controllers.CarActivity" />
         <activity android:name=".Controllers.ActionActivity" />
         <activity android:name=".Controllers.MiscActivity" />
-        <activity android:name=".Controllers.ObnActivity" />
-        <activity android:name=".Controllers.MainActivity">
+        <activity android:name=".Controllers.ObnActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

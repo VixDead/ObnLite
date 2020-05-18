@@ -1,16 +1,21 @@
 package com.vickx.obnlite.Models;
 
 
+import com.vickx.obnlite.VFactory;
+
 import java.time.LocalDateTime;
 
 public class Event {
 
     private LocalDateTime time = null;
-    private Observation observation = null;
-    private String string = "";
-    private String subject = null;
-    private String verb = null;
-    private String complement = null;
+    private int id;
+    private String subject;
+    private String verb;
+    private String complement;
+
+    public Event(){
+        this("John doe", "did", "that");
+    }
 
     public Event(String subject, String verb, String complement){
         this.subject = subject;
@@ -26,20 +31,18 @@ public class Event {
         this(eventString,"","");
     }
 
-    public LocalDateTime getDateTime() {
-        return time;
+    public String getDateTime() {
+        String timestring;
+        timestring = VFactory.addZero(this.time.getDayOfMonth()) + "/" + VFactory.addZero(this.time.getMonthValue()) + "/" + this.time.getYear() + " " + VFactory.addZero(this.time.getHour()) + ":" + VFactory.addZero(this.time.getMinute()) + ":" + VFactory.addZero(this.time.getSecond());
+        return timestring;
+    }
+
+    public LocalDateTime getTime(){
+        return this.time;
     }
 
     public void setTime(LocalDateTime time) {
         this.time = time;
-    }
-
-    public String getString() {
-        return string;
-    }
-
-    public void setString(String string) {
-        this.string = string;
     }
 
     public String getSubject() {
@@ -66,16 +69,9 @@ public class Event {
         this.complement = complement;
     }
 
-    public Observation getObservation() {
-        return observation;
-    }
-
-    public void setObservation(Observation observation) {
-        this.observation = observation;
-    }
-
     public String toString(){
-        String string = this.subject;
+        String string = "Le ";
+        string += this.getDateTime() + " " + this.subject;
         if(!this.verb.equals(""))
             string += " " + verb;
         if(!this.complement.equals(""))
@@ -83,4 +79,21 @@ public class Event {
 
         return string;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMessage(){
+        return this.subject + " " + verb + " " + complement;
+    }
+
+    public String getTimeString(){
+        return VFactory.addZero(this.time.getHour()) + ":" + VFactory.addZero(this.time.getMinute()) + ":" + VFactory.addZero(this.time.getSecond());
+    }
+
 }
